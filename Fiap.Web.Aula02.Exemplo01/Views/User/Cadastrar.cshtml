@@ -1,0 +1,35 @@
+﻿@model User
+
+@{
+    ViewData["Title"] = "Cadastrar";
+}
+
+<h1>Cadastrar</h1>
+
+
+@if (Model != null)
+{
+    <div>
+        @TempData["msg"]<br />
+        Nome: @ViewData["nome"]<br />
+        Data nascimento: @ViewBag.data.ToShortDateString()<br />
+        E-mail: @Model.Email
+    </div>
+}
+
+<form method="post">
+    <div class="form-group">
+        <label for="id-nome">Nome</label>
+        <input type="text" name="nome" id="id-nome" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="id-data">Data de nascimento</label>
+        <input type="text" name="dataNascimento" id="id-data" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="id-email">E-mail</label>
+        <input type="email" name="email" id="id-email" class="form-control" />
+    </div>
+    <input type="submit" value="Cadastrar" class="btn btn-dark" />
+
+</form>

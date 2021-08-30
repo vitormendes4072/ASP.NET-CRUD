@@ -1,0 +1,52 @@
+﻿@model Planeta
+
+@{
+    ViewData["Title"] = "Cadastrar";
+}
+
+<h1>Cadastrar</h1>
+
+@if (TempData["msg"] != null)
+{
+    @TempData["msg"]
+}
+
+    <form asp-action="cadastrar">
+        <div class="form-group">
+            <label asp-for="Nome"></label>
+            <input asp-for="Nome" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="TempoRotacao"></label>
+            <input asp-for="TempoRotacao" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="DataDescoberta"></label>
+            <input asp-for="DataDescoberta" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Galaxia"></label>
+            <select asp-for="Galaxia" class="form-control" asp-items="@ViewBag.galaxias">
+                <option>Selecione</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="Tipo"></label>
+            <select asp-for="Tipo" class="form-control" asp-items="@Html.GetEnumSelectList<TipoPlaneta>()">
+                <option>Selecione</option>
+            </select>
+        </div>
+            @foreach (var item in ViewBag.atmosferas)
+            {
+                <div class="form-group">
+                    <input type="radio" asp-for="Atmosfera" id="@item" value="@item"/>
+                    <label for="@item">@item</label>
+                </div>
+            }
+        <div class="form-group">
+            <input asp-for="Habitavel" />
+            <label asp-for="Habitavel"></label>
+        </div>
+        <input type="submit" value="Cadastrar" class="btn btn-dark" />
+        <a asp-action="listar" asp-controller="planeta" class="btn btn-outline-success">Listar planetas</a>
+    </form>
