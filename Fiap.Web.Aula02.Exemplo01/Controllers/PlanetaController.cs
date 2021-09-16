@@ -37,7 +37,7 @@ namespace Fiap.Web.Aula02.Exemplo01.Controllers
             planeta.Id = ++_index;
             _banco.Add(planeta);
             ViewBag.banco = _banco;
-            TempData["msg"] = "Planeta registrado!";
+            TempData["msg"] = "Planeta cadastrado!";
             //Enviar uma mensagem de sucesso para a View
             return RedirectToAction("Cadastrar");
         }
@@ -62,7 +62,7 @@ namespace Fiap.Web.Aula02.Exemplo01.Controllers
         [HttpPost]
         public IActionResult Editar(Planeta planeta)
         {
-            //Atualizar o planeta na lista
+            //Atualizar o planeta na lista, pesquisa a posição de um elemento da lista
             _banco[_banco.FindIndex(item => item.Id == planeta.Id)] = planeta;
             
 
@@ -70,6 +70,19 @@ namespace Fiap.Web.Aula02.Exemplo01.Controllers
             TempData["msg"] = "Planeta atualizado!";
 
             //Redirecionar para a página de listagem
+            return RedirectToAction("Listar");
+        }
+
+        [HttpPost]
+        public IActionResult Remover(int id)
+        {
+            //Remover o planeta da lista
+            _banco.RemoveAll(planeta => planeta.Id == id);
+            
+            //Mensagem de sucesso
+            TempData["msg"] = "Planeta removido!";
+
+            //Redirect para a listagem
             return RedirectToAction("Listar");
         }
     }
