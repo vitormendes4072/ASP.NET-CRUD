@@ -6,10 +6,12 @@
 
 <h1>Cadastrar</h1>
 
-@if (TempData["msg"] != null)
+<mensagem texto="@TempData["msg"]"></mensagem>
+
+@*if (TempData["msg"] != null)
 {
     @TempData["msg"]
-}
+}*@
 
     <form asp-action="cadastrar">
         <div class="form-group">
@@ -47,6 +49,7 @@
             <input asp-for="Habitavel" />
             <label asp-for="Habitavel"></label>
         </div>
-        <input type="submit" value="Cadastrar" class="btn btn-dark" />
-        <a asp-action="listar" asp-controller="planeta" class="btn btn-outline-success">Listar planetas</a>
+        <botao texto="Salvar" class="btn btn-outline-success"></botao>
+        <!--<input type="submit" value="Cadastrar" class="btn btn-dark" />-->
+        <a asp-action="listar" asp-controller="planeta" class="btn btn-dark">Listar planetas</a>
     </form>
