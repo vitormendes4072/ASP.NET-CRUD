@@ -1,0 +1,44 @@
+﻿@model Filme
+
+@{
+    ViewData["Title"] = "Cadastro";
+}
+
+<!--
+    Implementar o CRUD para o Model:
+        Filme( Codigo, Titulo, Genero (Enum), Data Lançamento,
+        Produtora (String que vem do controller), Livre para todas as idades (Bool) );
+
+    Criar o Model
+    Criar o Controller
+
+    Cadastrar:
+        Criar a action (método) GET: abrir a página com o formulário HTML
+        Criar a View com o formulário (partial para o formulário)
+        Criar a action (método) POST: recuperar o model, adicionar na lista, mensagem e redirect
+
+    Listar:
+        Criar/Ajustar a action GET: enviar a lista de model para a View
+        Criar a View com um tabela para exibir os models
+
+    Atualizar:
+        Ajustar a View de listagem para adicionar o link que envia o Id para abrir a página de atualização
+        Criar a action GET: recebe o Id, pesquisa e envia o model para View
+        Criar a View com o formulário (partial para o formulário)
+        Criar a action POST: recupera o model, atualiza na lista, mensagem e redirect
+
+    Remover:
+        Ajustar a View de listagem para adicionar o model para remoção
+        Criar a action POST: recebe o id, remove da lista, mensagem e redirect
+
+    Criar Tag Helper
+    Ajustar o Layout e temas
+-->
+
+<h1>Cadastrar filmes</h1>
+<mensagem texto="@TempData["msg"]"></mensagem>
+<form asp-action="cadastrar">
+    <partial name="_Form" />
+    <cadastro></cadastro>
+    <a asp-action="index" class="btn btn-light">Lista de filmes</a>
+</form>

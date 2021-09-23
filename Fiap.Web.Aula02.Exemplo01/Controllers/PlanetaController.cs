@@ -12,13 +12,6 @@ namespace Fiap.Web.Aula02.Exemplo01.Controllers
     {
         private static List<Planeta> _banco = new List<Planeta>();
         private static int _index = 0;
-        [HttpGet]
-        public IActionResult Cadastrar()
-        {
-            CarregarDados();
-            return View();
-        }
-
         private void CarregarDados()
         {
             //Envia as opções do select da galaxias
@@ -29,6 +22,13 @@ namespace Fiap.Web.Aula02.Exemplo01.Controllers
             //Radio
             ViewBag.atmosferas = new List<string>(new string[] { "Co2, N2", "N2, O2", "H2, HE, Ch4" });
         }
+        [HttpGet]
+        public IActionResult Cadastrar()
+        {
+            CarregarDados();
+            return View();
+        }
+
 
         [HttpPost]
         public IActionResult Cadastrar(Planeta planeta)

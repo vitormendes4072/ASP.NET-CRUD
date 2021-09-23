@@ -4,13 +4,19 @@
     ViewData["Title"] = "Listar";
 }
 
+<!-- Definir o conteúdo da Section Links definida no _Layout -->
+@section Links{
+    <a asp-action="Cadastrar">Cadastrar Planetas</a>
+}
 
 <h1>Lista de Planetas </h1>
 
-@if (TempData["msg"] != null)
+<mensagem texto="@TempData["msg"]"></mensagem>
+
+@*if (TempData["msg"] != null)
 {
     <div class="alert alert-sucess">@TempData["msg"]</div>
-}
+}*@
 
 <table class="table table-striped">
     <tr>
