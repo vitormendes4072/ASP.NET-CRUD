@@ -21,17 +21,13 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Cliente
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" asp-controller="Cliente" asp-action="Cadastrar">Cadastrar</a>
-                            </div>
+                                <a class="dropdown-item" asp-controller="Cliente" asp-action="Cadastrar">Cadastro</a>
+                                <a class="dropdown-item" asp-controller="Cliente" asp-action="Index">Lista de clientes</a>                           </div>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -39,6 +35,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" asp-controller="User" asp-action="Cadastrar">Cadastrar</a>
+                                <a class="dropdown-item" asp-controller="User" asp-action="Index">Lista de usuários</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -46,12 +43,10 @@
                                 Planeta
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" asp-controller="Planeta" asp-action="Cadastrar">Cadastrar</a>
-                                <a class="dropdown-item" asp-controller="Planeta" asp-action="Listar">Listar</a>
-                                <a class="dropdown-item" asp-controller="Planeta" asp-action="Editar">Editar</a>
+                                <a class="dropdown-item" asp-controller="Planeta" asp-action="Cadastrar">Cadastro</a>
+                                <a class="dropdown-item" asp-controller="Planeta" asp-action="Listar">Lista de planetas</a>
                             </div>
                         </li>
-
                     </ul>
                 </div>
             </div>

@@ -1,0 +1,12 @@
+﻿@model Cliente
+
+@{ViewData["Title"] = "Edição";}
+
+<h1>Editar</h1>
+<mensagem texto="@TempData["msg"]"></mensagem>
+<form asp-action="editar">
+    <input asp-for="Id" />
+    <partial name="_Form"/>
+    <botao></botao>
+    <a asp-action="Index" class="btn btn-danger">Cancelar</a>
+</form>
