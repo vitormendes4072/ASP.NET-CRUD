@@ -1,0 +1,31 @@
+﻿@model Filme
+
+<div class="form-group">
+    <label asp-for="Titulo"></label>
+    <input asp-for="Titulo" class="form-control"/>
+</div>
+<h1></h1>
+<div class="form-group">
+    <label asp-for="Genero"></label>
+    <select asp-for="Genero" class="form-control" asp-items="@Html.GetEnumSelectList<Genero>()">
+        <option>Selecione</option>
+    </select>
+</div>
+<h1></h1>
+<div class="form-group">
+    <label asp-for="DataLancamento"></label>
+    <input asp-for="DataLancamento" class="form-control"/>
+</div>
+<h1></h1>
+<div class="form-group">
+    <label asp-for="Produtora"></label>
+    <select asp-for="Produtora" asp-items="@ViewBag.produtoras" class="form-control">
+        <option>Selecione</option>
+    </select>
+</div>
+<h1></h1>
+<div class="form-group">
+    <input asp-for="LivreTodasIdades" />
+    <label asp-for="LivreTodasIdades"></label>
+</div>
+<h1></h1>
