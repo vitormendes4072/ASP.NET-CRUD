@@ -6,8 +6,16 @@
 
 <h1>Lista de Músicas</h1>
 <mensagem texto="@TempData["msg"]"></mensagem>
+
+<form class="form-inline mb-3">
+    <input type="text" name="nomeBusca" placeholder="Digite o nome" class="form-control mr-1"/>
+    <select asp-items="Html.GetEnumSelectList<Genero>()" name="generoBusca" class="form-control mr-1">
+        <option>Gênero</option>
+    </select>
+    <input type="submit" value="Pesquisar" class="btn btn-success"/>
+</form>
+
 <a asp-action="cadastrar" class="btn btn-primary">Cadastrar</a>
-<h1></h1>
 <table class="table">
     <thead>
         <tr>

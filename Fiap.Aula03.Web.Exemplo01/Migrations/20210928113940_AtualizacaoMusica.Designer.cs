@@ -4,14 +4,16 @@ using Fiap.Aula03.Web.Exemplo01.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Fiap.Aula03.Web.Exemplo01.Migrations
 {
     [DbContext(typeof(ProdutoraContext))]
-    partial class ProdutoraContextModelSnapshot : ModelSnapshot
+    [Migration("20210928113940_AtualizacaoMusica")]
+    partial class AtualizacaoMusica
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

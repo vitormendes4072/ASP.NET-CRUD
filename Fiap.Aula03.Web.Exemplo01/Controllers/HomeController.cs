@@ -1,4 +1,5 @@
 ﻿using Fiap.Aula03.Web.Exemplo01.Models;
+using Fiap.Aula03.Web.Exemplo01.Persistence;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,15 +12,20 @@ namespace Fiap.Aula03.Web.Exemplo01.Controllers
 {
     public class HomeController : Controller
     {
+        private ProdutoraContext _context;
+
+        //Construtor que recebe por injeção de dependência o Context
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ProdutoraContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
+            ViewData["qtd"] = _context.Musicas.Count(); //Retorna a qtd de músicas cadastradas
             return View();
         }
 

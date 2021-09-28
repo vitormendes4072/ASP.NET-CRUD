@@ -15,9 +15,16 @@ namespace Fiap.Aula03.Web.Exemplo01.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
+
+        // ? -> permite atribuir null
+        public IActionResult Index(string nomeBusca, Genero? generoBusca)
         {
-            return View(_context.Musicas.ToList());
+            //Pesquisar por parte do nome
+            var lista = _context.Musicas.Where(m =>
+                (m.Nome.Contains(nomeBusca) || nomeBusca == null) &&
+                (m.Genero == generoBusca || generoBusca == null)).ToList();
+            //Envia a lista de musicas para a View
+            return View(lista);
         }
 
         [HttpGet]
@@ -28,7 +35,7 @@ namespace Fiap.Aula03.Web.Exemplo01.Controllers
         [HttpPost]
         public IActionResult Cadastrar(Musica musica)
         {
-            TempData["msg"] = $"Música {musica} cadastrada com sucesso!";
+            TempData["msg"] = $"Música {musica.Nome} cadastrada com sucesso!";
             _context.Musicas.Add(musica); //Adiciona no context
             _context.SaveChanges(); //Commit
             return RedirectToAction("Cadastrar");
@@ -36,8 +43,8 @@ namespace Fiap.Aula03.Web.Exemplo01.Controllers
         [HttpPost]
         public IActionResult Remover(int id)
         {
-            TempData["msg"] = "Música removida com sucesso!";
             var musica = _context.Musicas.Find(id);
+            TempData["msg"] = $"Música {musica.Nome} removida com sucesso!";
             _context.Musicas.Remove(musica);
             _context.SaveChanges();
             return RedirectToAction("Index");
@@ -51,7 +58,7 @@ namespace Fiap.Aula03.Web.Exemplo01.Controllers
         [HttpPost]
         public IActionResult Editar(Musica musica)
         {
-            TempData["msg"] = $"Música {musica} atualizada com sucesso!";
+            TempData["msg"] = $"Música {musica.Nome} atualizada com sucesso!";
             _context.Musicas.Update(musica);
             _context.SaveChanges();
             return RedirectToAction("Index");
