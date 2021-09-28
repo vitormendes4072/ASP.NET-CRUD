@@ -1,0 +1,25 @@
+﻿@model Musica
+
+<div class="form-group">
+    <label asp-for="Nome"></label>
+    <input asp-for="Nome" class="form-control"/>
+</div>
+<div class="form-group">
+    <label asp-for="DataLancamento"></label>
+    <input asp-for="DataLancamento" class="form-control" />
+</div>
+<div class="form-group">
+    <label asp-for="Duracao"></label>
+    <input asp-for="Duracao" class="form-control" />
+</div>
+<div class="form-group">
+    <input asp-for="Explicita" />
+    <label asp-for="Explicita"></label>
+</div>
+<div class="form-group">
+    <label asp-for="Genero"></label>
+    <select asp-for="Genero" asp-items="@Html.GetEnumSelectList<Genero>()" class="form-control">
+        <option>Selecione</option>
+    </select>
+</div>
+<h1></h1>

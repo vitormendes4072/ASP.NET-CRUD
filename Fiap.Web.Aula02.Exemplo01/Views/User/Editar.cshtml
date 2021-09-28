@@ -1,0 +1,11 @@
+﻿@model User
+@{ ViewData["Title"] = "Editar"; }
+
+<h1>Editar</h1>
+<mensagem texto="@TempData["msg"]"></mensagem>
+<form asp-action="Editar">
+    <input asp-for="Id">
+    <partial name="_Form"/>
+    <botao></botao>
+    <a asp-action="Index" class="btn btn-danger">Cancelar</a>
+</form>

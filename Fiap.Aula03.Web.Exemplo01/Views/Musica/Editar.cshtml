@@ -1,0 +1,12 @@
+﻿@model Musica
+
+@{ ViewData["TItle"] = "Editar";}
+
+<h1>Editar Música</h1>
+<mensagem texto="@TempData["msg"]"></mensagem>
+<form asp-action="editar">
+    <input asp-for="MusicaId" />
+    <partial name="_Form" />
+    <input type="submit" value="Editar" class="btn btn-primary"/>
+    <a asp-action="index" class="btn btn-danger">Cancelar</a>
+</form>
