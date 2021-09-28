@@ -1,14 +1,11 @@
-﻿@model User
-
+﻿
 @{
     ViewData["Title"] = "Cadastrar";
 }
 
 <h1>Cadastrar</h1>
 <mensagem texto="@TempData["msg"]"></mensagem>
-
-<form asp-action="Cadastrar">
+<form asp-action="cadastrar">
     <partial name="_Form" />
-    <botao></botao>
-    <a asp-action="Index" class="btn btn-secondary">Listar</a>
+    <input type="submit" value="Cadastrar" class="btn btn-primary"/> 
 </form>

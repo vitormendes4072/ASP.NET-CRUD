@@ -1,0 +1,57 @@
+﻿@model List<User>
+
+@{ViewData["Title"] = "Index";}
+
+<h1>Lista</h1>
+<mensagem texto="@TempData["msg"]"></mensagem>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Data de nascimento</th>
+            <th scope="col">E-mail</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="table-active">
+                <th scope="row">@item.Id</th>
+                <td>@item.Nome</td>
+                <td>@item.DataNascimento</td>
+                <td>@item.Email</td>
+                <td>
+                    <a asp-action="editar" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Editar</a>
+                    <button onClick="idUser.value = @item.Id" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal">
+                        Remover
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmação</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Tem certeza que quer remover o usuário?
+            </div>
+            <div class="modal-footer">
+                <form asp-action="remover">
+                    <input type="hidden" name="id" id="idUser" />
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                    <button type="submit" class="btn btn-danger">Sim</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
