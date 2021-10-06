@@ -1,12 +1,8 @@
-﻿
-@{
-    ViewData["Title"] = "Cadastrar";
-}
-
+﻿@{ ViewData["Title"] = "Cadastrar";}
 <h1>Cadastrar</h1>
 <mensagem texto="@TempData["msg"]"></mensagem>
 <form asp-action="cadastrar">
-    <partial name="_Form" />
+    <partial name= "_Form" />
     <botao></botao>
     <a asp-action="index" class="btn btn-secondary">Listar</a>
 </form>

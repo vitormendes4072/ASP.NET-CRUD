@@ -1,0 +1,33 @@
+﻿@model Musica
+@{ 
+    ViewData["Title"] = "Detalhar";
+}
+
+<h1>@Model.Nome</h1>
+
+<div class="card" style="width: 18rem;">
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Álbum: @Model.Album?.Nome</li>
+        <li class="list-group-item">Álbum: @Model.Duracao</li>
+        <li class="list-group-item">Álbum: @Model.Genero</li>
+        <li class="list-group-item">Álbum: @Model.DataLancamento.ToShortDateString()</li>
+    </ul>
+</div>
+<br />
+<h2>Artistas</h2>
+
+<form asp-action="adicionar" class="form-inline mb-3">
+    <select class="form-control mr-2" name="id" asp-items="@ViewBag.selectArtistas">
+        <option>Selecione</option>
+    </select>
+    <input type="submit" value="Adicionar" class="btn btn-success"/>
+</form>
+<table class="table">
+    <tr>
+        <th>Nome</th>
+    </tr>
+    @foreach(var item in ViewBag.listaArtistas)
+    {
+
+    }
+</table>

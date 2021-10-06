@@ -18,21 +18,29 @@ namespace Fiap.Aula03.Web.Exemplo01.Models
         [DataType(DataType.Date), Display(Name = "Data de Lançamento"), Column("Dt_Lancamento", TypeName = "date"), Required]
         public DateTime DataLancamento { get; set; }
         [Display(Name = "Duração")]
-        public float Duracao { get; set; }
+        public float? Duracao { get; set; }
         [Display(Name = "Explícita")]
         public bool Explicita { get; set; }
         [Display(Name = "Gênero")]
-        public Genero Genero { get; set; }
-    }
-}
+        public Genero? Genero { get; set; }
 
-public enum Genero
-{
-    Rock,
-    Pop,
-    Pagode,
-    Samba,
-    Mpb,
-    Funk,
-    Sertanejo
+        //Relacionamento Many-to-One
+        public Album Album { get; set; }
+        public int? AlbumId { get; set; }
+
+        //Relacionamento Many-to-Many
+        public IList<MusicaArtista> MusicaArtistas { get; set; }
+    }
+    public enum Genero
+    {
+        Rock,
+        Pop,
+        Pagode,
+        Samba,
+        Mpb,
+        Funk,
+        Sertanejo,
+        Trap,
+        Rap
+    }
 }
