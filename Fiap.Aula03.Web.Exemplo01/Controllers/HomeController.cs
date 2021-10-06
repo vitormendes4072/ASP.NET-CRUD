@@ -25,7 +25,9 @@ namespace Fiap.Aula03.Web.Exemplo01.Controllers
 
         public IActionResult Index()
         {
-            ViewData["qtd"] = _context.Musicas.Count(); //Retorna a qtd de músicas cadastradas
+            ViewData["qtdMusica"] = _context.Musicas.Count(); //Retorna a qtd de músicas cadastradas
+            ViewData["qtdArtista"] = _context.Artistas.Count();
+            ViewData["qtdAlbum"] = _context.Albuns.Count();
             return View();
         }
 

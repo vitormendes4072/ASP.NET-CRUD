@@ -5,8 +5,20 @@
 <div class="card" style="width: 18rem;">
     <div class="card-body">
         <h5 class="card-title">Musicas disponíveis</h5>
-        <p class="card-text"> @ViewData["qtd"] </p>
+        <p class="card-text"> @ViewData["qtdMusica"] </p>
         <a asp-action="index" asp-controller="musica" class="card-link">Lista de músicas</a>
         <a asp-action="cadastrar" asp-controller="musica" class="card-link">Cadastrar</a>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Artistas disponíveis</h5>
+        <p class="card-text"> @ViewData["qtdArtista"] </p>
+        <a asp-action="index" asp-controller="artista" class="card-link">Lista de artistas</a>
+        <a asp-action="cadastrar" asp-controller="artista" class="card-link">Cadastrar</a>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Artistas disponíveis</h5>
+        <p class="card-text"> @ViewData["qtdAlbum"] </p>
+        <a asp-action="index" asp-controller="album" class="card-link">Lista de albúns</a>
+        <a asp-action="cadastrar" asp-controller="album" class="card-link">Cadastrar</a>
     </div>
 </div>

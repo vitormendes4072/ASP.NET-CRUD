@@ -1,6 +1,8 @@
 ﻿using Fiap.Aula03.Web.Exemplo01.Models;
 using Fiap.Aula03.Web.Exemplo01.Persistence;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace Fiap.Aula03.Web.Exemplo01.Controllers
@@ -16,13 +18,21 @@ namespace Fiap.Aula03.Web.Exemplo01.Controllers
             _context = context;
         }
 
+        //Enviar a lista de opções para o select
+        private void CarregarAlbuns()
+        {
+            var lista = _context.Albuns.OrderBy(a => a.Nome).ToList();
+                                  //lista, Propriedade para o value, Propriedade para o texto
+            ViewBag.albuns = new SelectList(lista, "AlbumId", "Nome");
+        }
+
         // ? -> permite atribuir null
         public IActionResult Index(string nomeBusca, Genero? generoBusca)
         {
             //Pesquisar por parte do nome
             var lista = _context.Musicas.Where(m =>
                 (m.Nome.Contains(nomeBusca) || nomeBusca == null) &&
-                (m.Genero == generoBusca || generoBusca == null)).ToList();
+                (m.Genero == generoBusca || generoBusca == null)).Include(m => m.Album).ToList();
             //Envia a lista de musicas para a View
             return View(lista);
         }
@@ -30,6 +40,7 @@ namespace Fiap.Aula03.Web.Exemplo01.Controllers
         [HttpGet]
         public IActionResult Cadastrar()
         {
+            CarregarAlbuns();
             return View();
         }
         [HttpPost]
@@ -38,7 +49,7 @@ namespace Fiap.Aula03.Web.Exemplo01.Controllers
             TempData["msg"] = $"Música {musica.Nome} cadastrada com sucesso!";
             _context.Musicas.Add(musica); //Adiciona no context
             _context.SaveChanges(); //Commit
-            return RedirectToAction("Cadastrar");
+            return RedirectToAction("Index");
         }
         [HttpPost]
         public IActionResult Remover(int id)
@@ -62,6 +73,14 @@ namespace Fiap.Aula03.Web.Exemplo01.Controllers
             _context.Musicas.Update(musica);
             _context.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Detalhar(int id)
+        {
+            //Pesquisa a musica pelo Id, incluindo o relacionamento com o álbum
+            var musica = _context.Musicas.Include(m => m.Album).Where(m => m.MusicaId == id).FirstOrDefault();
+            return View(musica);
         }
     }
 }

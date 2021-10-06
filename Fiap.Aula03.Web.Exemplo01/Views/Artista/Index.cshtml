@@ -1,56 +1,45 @@
-﻿@model List<Musica>
-
+﻿@model List<Artista>
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Lista de Músicas</h1>
+<h1>Lista de artistas</h1>
 <mensagem texto="@TempData["msg"]"></mensagem>
-
-<form class="form-inline mb-3">
-    <input type="text" name="nomeBusca" placeholder="Digite o nome" class="form-control mr-1"/>
-    <select asp-items="Html.GetEnumSelectList<Genero>()" name="generoBusca" class="form-control mr-1">
-        <option>Gênero</option>
-    </select>
-    <input type="submit" value="Pesquisar" class="btn btn-success"/>
-</form>
-
-<a asp-action="cadastrar" class="btn btn-primary">Cadastrar</a>
 <table class="table">
     <thead>
         <tr>
             <th scope="col">Id</th>
             <th scope="col">Nome</th>
-            <th scope="col">Data de lançamento</th>
-            <th scope="col">Duração</th>
-            <th scope="col">Explícita</th>
             <th scope="col">Gênero</th>
-            <th scope="col">Album</th>
-            <th scope="col"></th>
+            <th scope="col">Data de nascimento</th>
+            <th scope="col">Logradouro</th>
+            <th scope="col">CEP</th>
+            <th scope="col">Cidade</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <th scope="row">@item.MusicaId</th>
+                <th scope="row">@item.ArtistaId</th>
                 <td>@item.Nome</td>
-                <td>@item.DataLancamento.ToShortDateString()</td>
-                <td>@item.Duracao</td>
-                <td>@(item.Explicita ? "Sim" : "Não")</td>
                 <td>@item.Genero</td>
-                <td>@item.Album?.Nome</td>
+                <td>@item.DataNascimento.ToShortDateString()</td>
+                <td>@item.Endereco.Logradouro</td>
+                <td>@item.Endereco.Cep</td>
+                <td>@item.Endereco.Cidade</td>
                 <td>
-                    <a asp-action="editar" asp-route-id="@item.MusicaId" class="btn btn-primary btn-sm">Editar</a>
-                    <button onClick="musicaId.value = @item.MusicaId" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal">
+                    <a asp-action="editar" class="btn btn-primary btn-sm">Editar</a>
+                    <button onClick="artistaId.value = @item.ArtistaId" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal">
                         Remover
                     </button>
-                    <a asp-action="detalhar" asp-route-id="@item.MusicaId" class="btn btn-secondary btn-sm">Detalhes</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -63,11 +52,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                Tem certeza que quer remover a música?
+                Tem certeza que quer remover o artista?
             </div>
             <div class="modal-footer">
                 <form asp-action="remover">
-                    <input type="hidden" name="id" id="musicaId" />
+                    <input type="hidden" name="id" id="artistaId" />
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
                     <button type="submit" class="btn btn-danger">Sim</button>
                 </form>

@@ -9,11 +9,13 @@ namespace Fiap.Aula03.Web.Exemplo01.TagHelpers
     public class BotaoTagHelper : TagHelper
     {
         public string Texto { get; set; }
+        public string Class { get; set; }
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             output.TagName = "input";
             output.Attributes.SetAttribute("type", "submit");
             output.Attributes.SetAttribute("value", string.IsNullOrEmpty(Texto) ? "Cadastrar" : Texto);
+            output.Attributes.SetAttribute("class", string.IsNullOrEmpty(Class) ? "btn btn-primary" : Class);
         }
     }
 }

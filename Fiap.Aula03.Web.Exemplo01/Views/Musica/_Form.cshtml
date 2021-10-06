@@ -17,6 +17,12 @@
     <label asp-for="Explicita"></label>
 </div>
 <div class="form-group">
+    <label asp-for="Album"></label>
+    <select asp-for="AlbumId" class="form-control" asp-items="ViewBag.albuns">
+        <option>Selecione</option>
+    </select>
+</div>
+<div class="form-group">
     <label asp-for="Genero"></label>
     <select asp-for="Genero" asp-items="@Html.GetEnumSelectList<Genero>()" class="form-control">
         <option>Selecione</option>

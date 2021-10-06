@@ -23,18 +23,24 @@ namespace Fiap.Aula03.Web.Exemplo01.Models
         public bool Explicita { get; set; }
         [Display(Name = "Gênero")]
         public Genero? Genero { get; set; }
-    }
-}
 
-public enum Genero
-{
-    Rock,
-    Pop,
-    Pagode,
-    Samba,
-    Mpb,
-    Funk,
-    Sertanejo,
-    Trap,
-    Rap
+        //Relacionamento Many-to-One
+        public Album Album { get; set; }
+        public int? AlbumId { get; set; }
+
+        //Relacionamento Many-to-Many
+        public IList<MusicaArtista> MusicaArtistas { get; set; }
+    }
+    public enum Genero
+    {
+        Rock,
+        Pop,
+        Pagode,
+        Samba,
+        Mpb,
+        Funk,
+        Sertanejo,
+        Trap,
+        Rap
+    }
 }
